@@ -63,16 +63,17 @@ function! airline#themes#solarized#refresh()
   """"""""""""""""""""""""""""""""""""""""""""""""
   " Normal mode
   if s:background == 'dark'
-    let s:N1 = [(s:dark_text ? s:base03 : s:base3), (s:use_green ? s:green : s:base1), 'bold']
+    let s:N1 = [(s:dark_text ? s:base03 : s:base3), (s:use_green ? s:green : s:base1), '']
     let s:N2 = [s:base2, (s:tty ? s:base01 : s:base00), '']
     let s:N3 = [s:base01, s:base02, '']
   else
-    let s:N1 = [(s:dark_text ? s:base03 : s:base2), (s:use_green ? s:green : s:base00), 'bold']
+    let s:N1 = [(s:dark_text ? s:base03 : s:base2), (s:use_green ? s:green : s:base00), '']
     let s:N2 = [(s:tty ? s:base01 : s:base2), s:base1, '']
     let s:N3 = [s:base1, s:base2, '']
   endif
   let s:NF = [s:orange, s:N3[1], '']
-  let s:NW = [s:base3, s:orange, '']
+  let s:NW = [s:base3, s:yellow, '']
+  let s:NE = [s:base3, s:red, '']
   if s:background == 'dark'
     let s:NM = [s:base1, s:N3[1], '']
     let s:NMi = [s:base2, s:N3[1], '']
@@ -82,28 +83,28 @@ function! airline#themes#solarized#refresh()
   endif
 
   " Insert mode
-  let s:I1 = [s:N1[0], s:yellow, 'bold']
+  let s:I1 = [s:yellow, s:N1[1], '']
   let s:I2 = s:N2
   let s:I3 = s:N3
   let s:IF = s:NF
   let s:IM = s:NM
 
   " Visual mode
-  let s:V1 = [s:N1[0], s:magenta, 'bold']
+  let s:V1 = [s:magenta, s:N1[1], '']
   let s:V2 = s:N2
   let s:V3 = s:N3
   let s:VF = s:NF
   let s:VM = s:NM
 
   " Replace mode
-  let s:R1 = [s:N1[0], s:red, '']
+  let s:R1 = [s:red, s:N1[1], '']
   let s:R2 = s:N2
   let s:R3 = s:N3
   let s:RM = s:NM
   let s:RF = s:NF
 
   " Command mode
-  let s:C1 = [s:N1[0], s:violet, '']
+  let s:C1 = [s:violet, s:N1[1], '']
   let s:C2 = s:N2
   let s:C3 = s:N3
   let s:CF = s:NF
@@ -150,7 +151,7 @@ function! airline#themes#solarized#refresh()
         \ s:NW[0].g, s:NW[1].g, s:NW[0].t, s:NW[1].t, s:NW[2]]
 
   let g:airline#themes#solarized#palette.normal.airline_error = [
-        \ s:NW[0].g, s:NW[1].g, s:NW[0].t, s:NW[1].t, s:NW[2]]
+        \ s:NE[0].g, s:NE[1].g, s:NE[0].t, s:NE[1].t, s:NE[2]]
 
   let g:airline#themes#solarized#palette.normal_modified = {
         \ 'airline_c': [s:NM[0].g, s:NM[1].g,
