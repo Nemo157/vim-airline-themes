@@ -83,28 +83,28 @@ function! airline#themes#solarized#refresh()
   endif
 
   " Insert mode
-  let s:I1 = [s:yellow, s:N1[1], '']
+  let s:I1 = [s:yellow, s:N1[0], '']
   let s:I2 = s:N2
   let s:I3 = s:N3
   let s:IF = s:NF
   let s:IM = s:NM
 
   " Visual mode
-  let s:V1 = [s:magenta, s:N1[1], '']
+  let s:V1 = [s:magenta, s:N1[0], '']
   let s:V2 = s:N2
   let s:V3 = s:N3
   let s:VF = s:NF
   let s:VM = s:NM
 
   " Replace mode
-  let s:R1 = [s:red, s:N1[1], '']
+  let s:R1 = [s:red, s:N1[0], '']
   let s:R2 = s:N2
   let s:R3 = s:N3
   let s:RM = s:NM
   let s:RF = s:NF
 
   " Command mode
-  let s:C1 = [s:violet, s:N1[1], '']
+  let s:C1 = [s:violet, s:N1[0], '']
   let s:C2 = s:N2
   let s:C3 = s:N3
   let s:CF = s:NF
@@ -160,6 +160,9 @@ function! airline#themes#solarized#refresh()
   let g:airline#themes#solarized#palette.normal_modified.airline_warning =
         \ g:airline#themes#solarized#palette.normal.airline_warning
 
+  let g:airline#themes#solarized#palette.normal_modified.airline_error =
+        \ g:airline#themes#solarized#palette.normal.airline_error
+
   let g:airline#themes#solarized#palette.insert = airline#themes#generate_color_map(
         \ [s:I1[0].g, s:I1[1].g, s:I1[0].t, s:I1[1].t, s:I1[2]],
         \ [s:I2[0].g, s:I2[1].g, s:I2[0].t, s:I2[1].t, s:I2[2]],
@@ -168,12 +171,18 @@ function! airline#themes#solarized#refresh()
   let g:airline#themes#solarized#palette.insert.airline_warning =
         \ g:airline#themes#solarized#palette.normal.airline_warning
 
+  let g:airline#themes#solarized#palette.insert.airline_error =
+        \ g:airline#themes#solarized#palette.normal.airline_error
+
   let g:airline#themes#solarized#palette.insert_modified = {
         \ 'airline_c': [s:IM[0].g, s:IM[1].g,
         \ s:IM[0].t, s:IM[1].t, s:IM[2]]}
 
   let g:airline#themes#solarized#palette.insert_modified.airline_warning =
         \ g:airline#themes#solarized#palette.normal.airline_warning
+
+  let g:airline#themes#solarized#palette.insert_modified.airline_error =
+        \ g:airline#themes#solarized#palette.normal.airline_error
 
   let g:airline#themes#solarized#palette.visual = airline#themes#generate_color_map(
         \ [s:V1[0].g, s:V1[1].g, s:V1[0].t, s:V1[1].t, s:V1[2]],
@@ -183,12 +192,18 @@ function! airline#themes#solarized#refresh()
   let g:airline#themes#solarized#palette.visual.airline_warning =
         \ g:airline#themes#solarized#palette.normal.airline_warning
 
+  let g:airline#themes#solarized#palette.visual.airline_error =
+        \ g:airline#themes#solarized#palette.normal.airline_error
+
   let g:airline#themes#solarized#palette.visual_modified = {
         \ 'airline_c': [s:VM[0].g, s:VM[1].g,
         \ s:VM[0].t, s:VM[1].t, s:VM[2]]}
 
   let g:airline#themes#solarized#palette.visual_modified.airline_warning =
         \ g:airline#themes#solarized#palette.normal.airline_warning
+
+  let g:airline#themes#solarized#palette.visual_modified.airline_error =
+        \ g:airline#themes#solarized#palette.normal.airline_error
 
   let g:airline#themes#solarized#palette.replace = airline#themes#generate_color_map(
         \ [s:R1[0].g, s:R1[1].g, s:R1[0].t, s:R1[1].t, s:R1[2]],
@@ -198,6 +213,9 @@ function! airline#themes#solarized#refresh()
   let g:airline#themes#solarized#palette.replace.airline_warning =
         \ g:airline#themes#solarized#palette.normal.airline_warning
 
+  let g:airline#themes#solarized#palette.replace.airline_error =
+        \ g:airline#themes#solarized#palette.normal.airline_error
+
   let g:airline#themes#solarized#palette.replace_modified = {
         \ 'airline_c': [s:RM[0].g, s:RM[1].g,
         \ s:RM[0].t, s:RM[1].t, s:RM[2]]}
@@ -205,8 +223,8 @@ function! airline#themes#solarized#refresh()
   let g:airline#themes#solarized#palette.replace_modified.airline_warning =
         \ g:airline#themes#solarized#palette.normal.airline_warning
 
-  let g:airline#themes#solarized#palette.replace_modified.airline_warning =
-        \ g:airline#themes#solarized#palette.normal.airline_warning
+  let g:airline#themes#solarized#palette.replace_modified.airline_error =
+        \ g:airline#themes#solarized#palette.normal.airline_error
 
   if s:enable_command_color
     let g:airline#themes#solarized#palette.commandline = airline#themes#generate_color_map(
@@ -217,9 +235,18 @@ function! airline#themes#solarized#refresh()
     let g:airline#themes#solarized#palette.commandline.airline_warning =
           \ g:airline#themes#solarized#palette.normal.airline_warning
 
+    let g:airline#themes#solarized#palette.commandline.airline_error =
+          \ g:airline#themes#solarized#palette.normal.airline_error
+
     let g:airline#themes#solarized#palette.commandline_modified = {
           \ 'airline_c': [s:RM[0].g, s:RM[1].g,
           \ s:RM[0].t, s:RM[1].t, s:RM[2]]}
+
+    let g:airline#themes#solarized#palette.commandline.airline_error =
+          \ g:airline#themes#solarized#palette.normal.airline_error
+
+    let g:airline#themes#solarized#palette.commandline.airline_warning =
+          \ g:airline#themes#solarized#palette.normal.airline_warning
   endif
 
   let g:airline#themes#solarized#palette.tabline = {}
